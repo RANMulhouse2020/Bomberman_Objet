@@ -19,7 +19,6 @@ for (let i = 0; i < randomPos.length; i++) {
 const directions = ["up", "down", "left", "right"];
 
 document.addEventListener("keydown", function (e) {
-    //Utiliser un switch ? Sans doute...
     if (e.key === "ArrowUp") {
         player.move("up");
         player.detectionEnnemies(ennemies);

@@ -13,31 +13,28 @@ export default class Ennemi extends Character {
     }
 
     static randomPositions = () => {
-        let i = 0;
         let x;
         let y;
         let nbEnnemies = Ennemi.nbEnnemies;
         const positions = [];
         //On peut simplifier cet algo je crois...
-        while (i < nbEnnemies) {
+        while (positions.length < nbEnnemies) {
             //on  créé des valeurs aléatoires pour une position sur l'axe x et y qui ont des valeurs multiples de 50, soit la longueur et largeur de nos éléments, et qui sont adaptés à la taille de notre plateau de jeu
             x = Math.floor(Math.random() * 15) * 50;
             y = Math.floor(Math.random() * 15) * 50;
             //si ces valeurs ne sont pas trop proches du centre, soit la zone où se trouve notre personnage
             if (!(x >= 250 && x <= 450) && !(y >= 250 && y <= 450)) {
                 let add = true;
-                for (let j = 0; j < positions.length; j++) {
+                for (let i = 0; i < positions.length; i++) {
                     //si cette position existe déjà dans notre tableau de positions, càd qu'un ennemi a déjà cette position
-                    if (positions[j][0] === x && positions[j][1] === y) {
+                    if (positions[i][0] === x && positions[i][1] === y) {
                         //on empêvhe le fait de rajouter cette position dans notre tableau de position
                         add = false;
                     }
                 }
                 //si on a respecté toutes les conditions ==> add = true
                 if (add) {
-                    positions[i] = [x, y];
-                    //on incrémente notre boucle while
-                    i++;
+                    positions.push([x, y]);                   
                 }
             }
         }
